@@ -1,3 +1,8 @@
+if($('.h-flash-player').length > 0){
+  alert("No Support Flash Slides Now!!!");
+  return;
+}
+
 var host = 'http://www.ipad321.com:7788'
 $.getScript(host + '/javascripts/jquery.blockUI.js', function(data, textStatus){
   $.getScript(host + '/javascripts/jquery.qrcode.min.js', function(data, textStatus){
