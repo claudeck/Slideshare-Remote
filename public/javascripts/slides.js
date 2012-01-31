@@ -39,7 +39,10 @@ function connectToServer(){
       $('#qrcode').qrcode(host + '/mobile?slideId=' + data.slideId);
       $('#qrUrl').text(host + '/mobile?slideId=' + data.slideId);
       $.blockUI({
-        message: $('#qrDialog')
+        message: $('#qrDialog'),
+        onUnblock: function(){
+          $('#qrDialog').remove();
+        }
       });
       isShowQR = true;
     }
@@ -47,7 +50,6 @@ function connectToServer(){
 
   socket.on('accept_mobile_control', function(){
     $.unblockUI();
-    $('#qrDialog').remove();
   });
 
   socket.on('next_slide', function(){
