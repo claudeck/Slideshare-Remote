@@ -15,8 +15,9 @@ function connectToServer(){
   });
 
   socket.on('slide_share_add_success', function(data){
-    $(document.body).append('<div id="qrDialog"><div id="qrcode"></div></div>')
+    $(document.body).append('<div id="qrDialog"><div id="qrcode"></div><div id="qrUrl"></div></div>')
     $('#qrcode').qrcode(host + '/mobile?slideId=' + data.slideId);
+    $('#qrUrl').text(host + '/mobile?slideId=' + data.slideId);
     $.blockUI({
       message: $('#qrDialog')
     })
