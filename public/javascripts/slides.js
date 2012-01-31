@@ -1,7 +1,3 @@
-if(socket){
-  socket.disconnect();
-}
-
 var host = 'http://www.ipad321.com:7788'
 $.getScript(host + '/javascripts/jquery.blockUI.js', function(data, textStatus){
   $.getScript(host + '/javascripts/jquery.qrcode.min.js', function(data, textStatus){
@@ -12,7 +8,7 @@ $.getScript(host + '/javascripts/jquery.blockUI.js', function(data, textStatus){
 });
 
 function connectToServer(){
-  socket = io.connect(host);
+  var socket = io.connect(host);
 
   socket.on('connect', function(){
     socket.emit('slide_share_start');
