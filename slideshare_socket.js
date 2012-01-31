@@ -1,9 +1,6 @@
-var UUID = require('uuid-js');
-
 var slideSockets = {};
 
-exports.addSlide = function(socket){
-  var slideId = UUID.create().toString();
+exports.addSlide = function(socket, slideId){
   socket.slideId = slideId;
   slideSockets[slideId] = socket;
 

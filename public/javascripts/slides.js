@@ -7,11 +7,29 @@ $.getScript(host + '/javascripts/jquery.blockUI.js', function(data, textStatus){
   });
 });
 
+function randomUUID() {
+  var s = [], itoh = '0123456789ABCDEF';
+ 
+  for (var i = 0; i <36; i++) s[i] = Math.floor(Math.random()*0x10);
+ 
+  s[14] = 4;
+  s[19] = (s[19] & 0x3) | 0x8;
+ 
+  for (var i = 0; i <36; i++) s[i] = itoh[s[i]];
+ 
+  s[8] = s[13] = s[18] = s[23] = '-';
+ 
+  return s.join('');
+}
+
+
 function connectToServer(){
   var socket = io.connect(host);
 
+  var slideId = randomUUID();
+
   socket.on('connect', function(){
-    socket.emit('slide_share_start');
+    socket.emit('slide_share_start', {slideId: slideId});
   });
 
   socket.on('slide_share_add_success', function(data){
@@ -25,6 +43,7 @@ function connectToServer(){
 
   socket.on('accept_mobile_control', function(){
     $.unblockUI();
+    $('#qrDialog').remove();
   });
 
   socket.on('next_slide', function(){

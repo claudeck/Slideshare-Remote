@@ -42,9 +42,9 @@ console.log("Express server listening on port %d in %s mode", app.address().port
 
 socket.sockets.on('connection', function(socket){
   
-  socket.on('slide_share_start', function(){
-    slideShareSocket.addSlide(socket);
-    socket.emit('slide_share_add_success', {slideId: socket.slideId});
+  socket.on('slide_share_start', function(data){
+    slideShareSocket.addSlide(socket, data.slideId);
+    socket.emit('slide_share_add_success', {slideId: data.slideId});
   });
 
   socket.on('mobile_start', function(data){
