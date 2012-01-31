@@ -22,15 +22,15 @@ function connectToServer(){
     })
   });
 
-  socket.on('mobile_scan_finish', function(){
-    //modal close
+  socket.on('accept_mobile_control', function(){
+    $.unblockUI();
   });
 
   socket.on('next_slide', function(){
-    //mock click next
+    $('.btnNext').click();
   });
 
   socket.on('prev_slide', function(){
-    // mock click prev
+    $('.btnPrevious').click();
   });
 }

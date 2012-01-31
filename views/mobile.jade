@@ -3,7 +3,30 @@ html
   head
     title 'SlideShare Remote'
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jquery-1.7.min.js')
     script(src='/socket.io/socket.io.js')
+    script
+      $(function(){
+        var slideId = '#{slideId}';
+        var socket = io.connect();
+  
+        socket.on('connect', function(){
+          socket.emit('mobile_start', {slideId: slideId});
+        });
+
+        socket.on('no_slide_socket', function(){
+          socket.disconnect();
+          alert("No Remote Slides");
+        });
+
+        $('#next').click(function(){
+          socket.emit('mobile_next', {slideId: slideId});
+        });
+        
+        $('#prev').click(function(){
+          socket.emit('mobile_prev', {slideId: slideId});
+        });
+      });
   body
     input#next(type='button', value='Next')
     input#prev(type='button', value='Prev')

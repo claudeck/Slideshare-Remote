@@ -48,18 +48,15 @@ socket.sockets.on('connection', function(socket){
   });
 
   socket.on('mobile_start', function(data){
-    //if slide maps contains data.slideId
-    //start control
-    //else
-    //emit disabled
+    slideShareSocket.accept(socket, data.slideId);
   });
 
   socket.on('mobile_next', function(data){
-    // emit next
+    slideShareSocket.next(data.slideId);
   });
 
   socket.on('mobile_prev', function(data){
-    // emit prev
+    slideShareSocket.prev(data.slideId);
   });
 
 
