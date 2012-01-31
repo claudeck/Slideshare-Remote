@@ -6,6 +6,12 @@ exports.addSlide = function(socket){
   var slideId = UUID.create().toString();
   socket.slideId = slideId;
   slideSockets[slideId] = socket;
+
+  socket.on('disconnect', function(){
+    delete slideSockets[socket.slideId];
+    console.log('DELETE SLIDE_ID:' + socket.slideId);
+  });
+
 };
 
 exports.accept = function(mobileSocket, slideId){

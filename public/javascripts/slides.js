@@ -1,3 +1,7 @@
+if(socket){
+  socket.disconnect();
+}
+
 var host = 'http://www.ipad321.com:7788'
 $.getScript(host + '/javascripts/jquery.blockUI.js', function(data, textStatus){
   $.getScript(host + '/javascripts/jquery.qrcode.min.js', function(data, textStatus){
@@ -8,7 +12,7 @@ $.getScript(host + '/javascripts/jquery.blockUI.js', function(data, textStatus){
 });
 
 function connectToServer(){
-  var socket = io.connect(host);
+  socket = io.connect(host);
 
   socket.on('connect', function(){
     socket.emit('slide_share_start');
@@ -20,7 +24,7 @@ function connectToServer(){
     $('#qrUrl').text(host + '/mobile?slideId=' + data.slideId);
     $.blockUI({
       message: $('#qrDialog')
-    })
+    });
   });
 
   socket.on('accept_mobile_control', function(){

@@ -59,5 +59,4 @@ socket.sockets.on('connection', function(socket){
     slideShareSocket.prev(data.slideId);
   });
 
-
 });

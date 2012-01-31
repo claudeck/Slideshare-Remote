@@ -1,9 +1,11 @@
-!!!
+!!! html
 html
   head
-    title 'SlideShare Remote'
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='/javascripts/jquery-1.7.min.js')
+    title SlideShare Remote
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css')
+    script(src='http://code.jquery.com/jquery-1.6.4.min.js')
+    script(src='http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js')
     script(src='/socket.io/socket.io.js')
     script
       $(function(){
@@ -28,5 +30,9 @@ html
         });
       });
   body
-    input#next(type='button', value='Next')
-    input#prev(type='button', value='Prev')
+    div(data-role='page')
+      div(data-role='header')
+        h1 SlideShare Remote
+      div(data-role='content')
+        a#prev(href='#', data-role='button', data-icon='arrow-l', data-inline="true", data-iconpos='top') Prev
+        a#next(href='#', data-role='button', data-icon='arrow-r', data-inline="true", data-iconpos='top') Next
