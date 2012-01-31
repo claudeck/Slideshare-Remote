@@ -1,0 +1,1 @@
+javascript: function remote_slideshare() {var d = document,z = d.createElement('scr' + 'ipt'),b = d.body;try {if (!b) throw (0);z.setAttribute('src', 'http://localhost:7878/slides');b.appendChild(z);} catch (e) {alert('Please wait until the page has loaded.');}}remote_slideshare();void(0)
