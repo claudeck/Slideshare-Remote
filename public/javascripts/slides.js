@@ -1,7 +1,4 @@
-if($('.h-flash-player').length > 0){
-  alert("No Support Flash Slides Now!!!");
-  return;
-}
+var isFlashMovie = $('.h-flash-player').length > 0;
 
 var host = 'http://www.ipad321.com:7788'
 $.getScript(host + '/javascripts/jquery.blockUI.js', function(data, textStatus){
@@ -58,11 +55,19 @@ function connectToServer(){
   });
 
   socket.on('next_slide', function(){
-    $.slideshareEventManager.trigger('next');
+    if(isFlashMovie){
+      document.getElementById('player').next();  
+    }else{
+      $.slideshareEventManager.trigger('next');
+    }
   });
 
   socket.on('prev_slide', function(){
-    $.slideshareEventManager.trigger('previous');
+    if(isFlashMovie){
+      document.getElementById('player').previous();  
+    }else{    
+      $.slideshareEventManager.trigger('previous');
+    }
   });
 
   socket.on('fullscreen', function(){
