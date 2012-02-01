@@ -59,4 +59,8 @@ socket.sockets.on('connection', function(socket){
     slideShareSocket.prev(data.slideId);
   });
 
+  socket.on('mobile_fullscreen', function(data){
+    slideShareSocket.fullscreen(data.slideId);
+  });
+
 });

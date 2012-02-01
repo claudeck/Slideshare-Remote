@@ -64,4 +64,12 @@ function connectToServer(){
   socket.on('prev_slide', function(){
     $('.btnPrevious').click();
   });
+
+  socket.on('fullscreen', function(){
+    if($('.btnFullScreen').css('display') == 'none'){
+      $('.btnLeaveFullScreen').click();
+    }else{
+      $('.btnFullScreen').click();
+    }
+  })
 }

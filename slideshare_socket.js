@@ -37,3 +37,13 @@ exports.prev = function(slideId){
     slideSocket.emit('prev_slide');
   }
 }
+
+exports.fullscreen = function(slideId){
+  var slideSocket = slideSockets[slideId];
+  if(slideSocket == null){
+    mobileSocket.emit('no_slide_socket');
+  }else{
+    slideSocket.emit('fullscreen');
+  }
+}
+

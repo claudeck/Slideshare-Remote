@@ -28,6 +28,10 @@ html
         $('#prev').click(function(){
           socket.emit('mobile_prev', {slideId: slideId});
         });
+        
+        $('#fullscreen').click(function(){
+          socket.emit('mobile_fullscreen', {slideId: slideId});
+        });
       });
   body
     div(data-role='page')
@@ -37,3 +41,5 @@ html
         a#next(href='#', data-role='button', data-icon='arrow-r', data-iconpos='top') Next
         br
         a#prev(href='#', data-role='button', data-icon='arrow-l', data-iconpos='top') Prev
+        br
+        a#fullscreen(href='#', data-role='button', data-icon='star', data-iconpos='top') FullScreen
